@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
 
+/* Navbar */
+
 .logo-image {
   height: 90px;
 }
@@ -37,4 +39,31 @@
 
 .navbar-toggler {
   border-color: rgb(210, 174, 109);
+}
+
+/* Featured roducts */
+
+.main {
+  padding: 1rem;
+}
+
+.featured-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+}
+
+.product img {
+  width: 100%;
+  max-width: 400px;
+  height: 300px;
+}
+
+.product-info {
+  padding: 1rem;
 }
