@@ -1,29 +1,19 @@
 import React from "react";
-import data from "../data";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeScreen from "../screens/HomeScreen";
+import ProductScreen from "../screens/ProductScreen";
+import NavBar from "./NavBar";
 
 export default function MainPage() {
   return (
-    <div className="main">
-      <h1>Featured Products</h1>
-      <div className="featured-products">
-        {data.products.map((product) => (
-          <div className="product" key={product.slug}>
-            <a href={`/product/${product.slug}`}>
-              <img
-                src={require(`../images/products${product.image}`)}
-                alt={product.name}
-              />
-            </a>
-            <div className="product-info">
-              <a href={`/product/${product.slug}`}>
-                <p>{product.name}</p>
-              </a>
-              <p>${product.price}</p>
-              <button>Add to cart</button>
-            </div>
-          </div>
-        ))}
+    <BrowserRouter>
+      <div>
+        <NavBar />
+        <Routes>
+          <Route path="/:category/:slug" element={<ProductScreen />} />
+          <Route path="/" element={<HomeScreen />} />
+        </Routes>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }

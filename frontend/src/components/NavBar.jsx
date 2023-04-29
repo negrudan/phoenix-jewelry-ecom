@@ -1,5 +1,6 @@
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
@@ -7,13 +8,13 @@ export default function NavBar() {
       {/* bg-black bg-gradient */}
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to={`/`}>
             <img
               src={require("../images/logo/phoenix5.png")}
               alt="phoenix jewelry logo"
               className="d-inline-block align-text-to logo-image"
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
