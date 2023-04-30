@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
 
+.site-wrapper {
+  min-height: 100vh;
+}
+
 /* Navbar */
 
 .logo-image {
@@ -41,10 +45,22 @@
   border-color: rgb(210, 174, 109);
 }
 
-/* Featured roducts */
+/* Products */
 
-.main {
-  padding: 1rem;
+main {
+  flex: 1;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn-primary {
+  background-color: #212121;
+  border-color: #000000;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  border-color: #d2ae6d;
+  color: #000000;
 }
 
 .featured-products {
@@ -53,17 +69,37 @@
   justify-content: center;
 }
 
-.product {
-  border: 1px #404040 solid;
-  margin: 1rem;
+.featured-products a {
+  color: #000000;
+  font-weight: 400;
+  text-decoration: none;
 }
 
-.product img {
-  width: 100%;
-  max-width: 400px;
-  height: 300px;
+.featured-products a:hover {
+  color: #0d0d0d;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.1px;
 }
 
-.product-info {
-  padding: 1rem;
+.rating span {
+  color: #d2ae6d;
+}
+
+.card-text {
+  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* .card {
+  width: 15rem;
+} */
+
+/* Footer */
+
+footer {
+  font-family: "Montserrat", sans-serif;
+}
+
+.img-large {
+  max-width: 100%;
 }

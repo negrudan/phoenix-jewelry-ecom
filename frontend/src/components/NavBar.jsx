@@ -2,7 +2,7 @@ import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+export default function Navbar() {
   return (
     <React.Fragment>
       {/* bg-black bg-gradient */}

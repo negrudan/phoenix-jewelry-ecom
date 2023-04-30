@@ -1,7 +1,8 @@
-import { useEffect, useReducer, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useReducer } from "react";
 import axios from "axios";
 import logger from "use-reducer-logger";
+import { Helmet } from "react-helmet-async";
+import Product from "../components/Product";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,6 +40,9 @@ export default function HomeScreen() {
   return (
     <div>
       <div className="main">
+        <Helmet>
+          <title>Phoenix Jewelry</title>
+        </Helmet>
         <h1>Featured Products</h1>
         <div className="featured-products">
           {loading ? (
@@ -46,23 +50,16 @@ export default function HomeScreen() {
           ) : error ? (
             <div>{error}</div>
           ) : (
-            products.map((product) => (
-              <div className="product" key={product.slug}>
-                <Link to={`/${product.category}/${product.slug}`}>
-                  <img
-                    src={require(`../images/products${product.image}`)}
-                    alt={product.name}
-                  />
-                </Link>
-                <div className="product-info">
-                  <Link to={`/product/${product.slug}`}>
-                    <p>{product.name}</p>
-                  </Link>
-                  <p>${product.price}</p>
-                  <button>Add to cart</button>
+            <div className="row">
+              {products.map((product) => (
+                <div
+                  key={product.slug}
+                  className="col-sm-6 col-md-4 col-lg-3 mb-3"
+                >
+                  <Product product={product} />
                 </div>
-              </div>
-            ))
+              ))}
+            </div>
           )}
         </div>
       </div>
