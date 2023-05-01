@@ -84,13 +84,13 @@ main {
   justify-content: center;
 }
 
-.featured-products a {
+.product-link {
   color: #000000;
   font-weight: 400;
   text-decoration: none;
 }
 
-.featured-products a:hover {
+.product-link:hover {
   color: #0d0d0d;
   text-decoration-line: underline;
   text-decoration-thickness: 1.1px;
@@ -119,7 +119,26 @@ footer {
   max-width: 100%;
 }
 
-.rounded-pill {
+.img-thumbnail {
+  height: 80px;
+}
+
+.rounded-pillos {
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: #d2ae6d;
+  text-align: center;
   font-size: 0.7rem;
-  font-family: "Montserrat";
+  padding-left: 2px;
+  border-radius: 5px;
+  width: 1.5em;
+  height: 1.5em;
+  font-weight: normal;
+}
+
+.rounded-pill {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
 }
