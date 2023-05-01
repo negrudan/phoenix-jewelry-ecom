@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Link } from "react-router-dom";
+import { Store } from "../Store";
 
 export default function Navbar() {
+  const { state } = useContext(Store);
+  const { cart } = state;
+
   return (
     <React.Fragment>
       {/* bg-black bg-gradient */}
@@ -84,6 +89,22 @@ export default function Navbar() {
                 <SearchIcon />
               </button>
             </form>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <Link
+                  className="nav-link active position-relative"
+                  aria-current="page"
+                  to={`/cart`}
+                >
+                  <ShoppingBagOutlinedIcon fontSize="large" />
+                  {cart.cartItems.length > 0 && (
+                    <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
+                      {cart.cartItems.length}
+                    </span>
+                  )}
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

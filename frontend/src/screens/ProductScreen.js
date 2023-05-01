@@ -1,8 +1,12 @@
-import { useEffect, useReducer } from "react";
+import { useContext, useEffect, useReducer } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import Rating from "../components/Rating";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { getError } from "../utils";
+import { Store } from "../Store";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -37,16 +41,24 @@ export default function ProductScreen() {
         );
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (err) {
-        dispatch({ type: "FETCH_FAIL", payload: err.message });
+        dispatch({ type: "FETCH_FAIL", payload: getError(err) });
       }
     };
     fetchData();
   }, [category, slug]);
 
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...product, quantity: 1 },
+    });
+  };
+
   return loading ? (
-    <div>Loading...</div>
+    <LoadingBox />
   ) : error ? (
-    <div>{error}</div>
+    <MessageBox variant="alert alert-danger">{error}</MessageBox>
   ) : (
     <div>
       <div className="row">
@@ -100,7 +112,12 @@ export default function ProductScreen() {
                 {product.countInStock > 0 && (
                   <li className="list-group-item">
                     <div className="d-grid">
-                      <button className="btn btn-primary">Add to cart</button>
+                      <button
+                        onClick={addToCartHandler}
+                        className="btn btn-primary"
+                      >
+                        Add to cart
+                      </button>
                     </div>
                   </li>
                 )}

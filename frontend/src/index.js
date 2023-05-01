@@ -7,10 +7,15 @@ import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import "./index.css";
+import { StoreProvider } from "./Store";
 
 ReactDOM.render(
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>,
+  <React.StrictMode>
+    <StoreProvider>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </StoreProvider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
