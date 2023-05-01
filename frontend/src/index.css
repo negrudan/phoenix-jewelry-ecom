@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap");
 
+@font-face {
+  font-family: viola;
+  src: url(./fonts/VIOLA.ttf);
+}
+
+@font-face {
+  font-family: rather;
+  src: url(./fonts/RATHER.otf);
+}
+
+@font-face {
+  font-family: balbek;
+  src: url(./fonts/balbek-personal-use-only.otf);
+}
+
 .site-wrapper {
   min-height: 100vh;
 }
@@ -14,7 +29,7 @@
 }
 .nav-link {
   color: #ffffff !important;
-  font-family: "Poppins", sans-serif;
+  font-family: rather, "Poppins", sans-serif;
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 0.1em;
@@ -106,4 +121,5 @@ footer {
 
 .rounded-pill {
   font-size: 0.7rem;
+  font-family: "Montserrat";
 }

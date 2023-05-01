@@ -1,6 +1,7 @@
 const data = {
   products: [
     {
+      _id: "1",
       name: "14K Rose Gold Ring",
       slug: "14k-rose-gold-ring-with-agate-and-zirconium",
       displayCategory: "Rings",
@@ -15,6 +16,7 @@ const data = {
         "14K rose gold ring, for women. A beautiful piece, made by Tiffany for an utmost elegant lady.",
     },
     {
+      _id: "2",
       name: "Rolex DATEJUST",
       slug: "rolex-datejust",
       displayCategory: "Watches",
@@ -28,6 +30,7 @@ const data = {
       description: "High quality watch, made by Rolex, for elegant men.",
     },
     {
+      _id: "3",
       name: "Rose Gold Necklace",
       slug: "rose-gold-necklace-with-ceramics-and-diamonds",
       displayCategory: "Necklaces",
@@ -42,6 +45,7 @@ const data = {
         "Masterfully made necklace, built for elegance and select luxury.",
     },
     {
+      _id: "4",
       name: "White Gold Earrings",
       slug: "white-gold-earrings-with-topaz-and-zirconium",
       displayCategory: "Earrings",

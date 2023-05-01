@@ -99,7 +99,7 @@ export default function Navbar() {
                   <ShoppingBagOutlinedIcon fontSize="large" />
                   {cart.cartItems.length > 0 && (
                     <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
-                      {cart.cartItems.length}
+                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </span>
                   )}
                 </Link>

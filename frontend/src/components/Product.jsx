@@ -15,7 +15,7 @@ export default function Product(props) {
         />
       </Link>
       <div className="card-body">
-        <Link to={`/product/${product.slug}`}>
+        <Link to={`/${product.category}/${product.slug}`}>
           <p className="card-title">{product.name}</p>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
