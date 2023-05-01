@@ -92,13 +92,13 @@ export default function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className="nav-link active position-relative"
+                  className="nav-link active position-relative cart-responsive"
                   aria-current="page"
                   to={`/cart`}
                 >
                   <ShoppingBagOutlinedIcon fontSize="large" />
                   {cart.cartItems.length > 0 && (
-                    <span className="position-absolute top-10 start-90 translate-middle badge rounded-pill bg-danger">
+                    <span className="price-indicator">
                       {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
                     </span>
                   )}

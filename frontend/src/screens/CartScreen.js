@@ -1,14 +1,40 @@
 import { useContext } from "react";
 import { Store } from "../Store";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import MessageBox from "../components/MessageBox";
+import axios from "axios";
 
 export default function CartScreen() {
+  const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
+
+  const updateCartHandler = async (item, quantity) => {
+    const { data } = await axios.get(`api/products/${item._id}`);
+
+    if (data.countInStock < quantity) {
+      window.alert(
+        "We apologize, the product you've requested is out of stock."
+      );
+      return;
+    }
+
+    ctxDispatch({
+      type: "CART_ADD_ITEM",
+      payload: { ...item, quantity },
+    });
+  };
+
+  const removeItemHandler = (item) => {
+    ctxDispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
+
+  const checkoutHandler = () => {
+    navigate("/signin?redirect=/shipping");
+  };
 
   return (
     <div>
@@ -43,6 +69,9 @@ export default function CartScreen() {
                     <div className="col-md-3">
                       <button
                         className="btn btn-light"
+                        onClick={() =>
+                          updateCartHandler(item, item.quantity - 1)
+                        }
                         disabled={item.quantity === 1}
                       >
                         <i className="fas fa-minus-circle"></i>
@@ -50,6 +79,9 @@ export default function CartScreen() {
                       <span>{item.quantity}</span>{" "}
                       <button
                         className="btn btn-light"
+                        onClick={() =>
+                          updateCartHandler(item, item.quantity + 1)
+                        }
                         disabled={item.quantity === item.countInStock}
                       >
                         <i className="fas fa-plus-circle"></i>
@@ -57,7 +89,10 @@ export default function CartScreen() {
                     </div>
                     <div className="col-md-3">${item.price}</div>
                     <div className="col-md-2">
-                      <button className="btn btn-light">
+                      <button
+                        onClick={() => removeItemHandler(item)}
+                        className="btn btn-light"
+                      >
                         <i className="fas fa-trash"></i>
                       </button>
                     </div>
@@ -83,6 +118,7 @@ export default function CartScreen() {
                     <button
                       className="btn btn-primary"
                       type="button"
+                      onClick={checkoutHandler}
                       disabled={cartItems.length === 0}
                     >
                       Proceed to Checkout
