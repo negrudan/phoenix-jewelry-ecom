@@ -5,6 +5,7 @@ import ProductScreen from "../screens/ProductScreen";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CartScreen from "../screens/CartScreen";
+import SigninScreen from "../screens/SigninScreen";
 
 export default function MainPage() {
   return (
@@ -16,6 +17,7 @@ export default function MainPage() {
             <Routes>
               <Route path="/:category/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />} />
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </div>

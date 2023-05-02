@@ -135,19 +135,8 @@ footer {
   height: 80px;
 }
 
-.rounded-pillst {
-  font-family: "Montserrat", sans-serif;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  background: #d2ae6d;
-  text-align: center;
-  font-size: 0.7rem;
-  padding-left: 2px;
-  border-radius: 5px;
-  width: 1.5em;
-  height: 1.5em;
-  font-weight: normal;
+.small-container {
+  max-width: 600px;
 }
 
 .price-indicator {
@@ -180,7 +169,6 @@ footer {
   }
 }
 
-.rounded-pill {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.7rem;
+.form-control {
+  width: 100%;
 }
