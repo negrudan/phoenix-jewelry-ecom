@@ -1,16 +1,24 @@
 import React, { useContext } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
 
 export default function Navbar() {
-  const { state } = useContext(Store);
-  const { cart } = state;
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart, userInfo } = state;
+
+  const signoutHandler = () => {
+    ctxDispatch({ type: "USER_SIGNOUT" });
+    localStorage.removeItem("userInfo");
+  };
 
   return (
     <React.Fragment>
       {/* bg-black bg-gradient */}
+      <ToastContainer position="bottom-center" limit={1} />
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to={`/`}>
@@ -43,37 +51,6 @@ export default function Navbar() {
                   LINK
                 </a>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  DROPDOWN
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
               <li className="nav-item">
                 <a className="nav-link disabled">DISABLED</a>
               </li>
@@ -90,6 +67,50 @@ export default function Navbar() {
               </button>
             </form>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                {userInfo ? (
+                  <li className="nav-item dropdown">
+                    <Link
+                      className="nav-link dropdown-toggle"
+                      id="basic-nav-dropdown"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      {userInfo.name}
+                    </Link>
+                    <ul className="dropdown-menu">
+                      <li>
+                        <Link className="dropdown-item" to={`/profile`}>
+                          User Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to={`/orderhistory`}>
+                          Order History
+                        </Link>
+                      </li>
+                      <li>
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <Link
+                          className="dropdown-item"
+                          to={`#signout`}
+                          onClick={signoutHandler}
+                        >
+                          Sign Out
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                ) : (
+                  <Link className="nav-link" to={`/signin`}>
+                    Sign In
+                  </Link>
+                )}
+              </li>
               <li className="nav-item">
                 <Link
                   className="nav-link active position-relative cart-responsive"
