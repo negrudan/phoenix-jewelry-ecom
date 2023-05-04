@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { Store } from "../Store";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
+// import axios from "axios";
 
 export default function SigninScreen() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function SigninScreen() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const { userInfo } = state;
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (e, item) => {
     e.preventDefault();
 
     try {
@@ -26,6 +27,7 @@ export default function SigninScreen() {
         email,
         password,
       });
+      // const { cartData } = await axios.get(`/api/products/${item._id}`);
       ctxDispatch({ type: "USER_SIGNIN", payload: data });
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");
@@ -40,6 +42,10 @@ export default function SigninScreen() {
     }
   }, [navigate, redirect, userInfo]);
 
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
+
   return (
     <div className="container small-container">
       <Helmet>
@@ -47,20 +53,26 @@ export default function SigninScreen() {
       </Helmet>
       <h1 className="my-3">Sign In</h1>
       <form onSubmit={submitHandler}>
-        <div className="mb-3" controlId="email">
-          <label className="form-label">Email</label>
+        <div className="mb-3">
+          <label htmlFor="email" className="form-label">
+            Email
+          </label>
           <input
             type="email"
             className="form-control"
+            id="email"
             required
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="mb-3" controlId="password">
-          <label className="form-label">Password</label>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label">
+            Password
+          </label>
           <input
             type="password"
             className="form-control"
+            id="password"
             required
             onChange={(e) => setPassword(e.target.value)}
           />

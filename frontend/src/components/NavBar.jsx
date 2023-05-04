@@ -13,6 +13,7 @@ export default function Navbar() {
   const signoutHandler = () => {
     ctxDispatch({ type: "USER_SIGNOUT" });
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("shippingAddress");
   };
 
   return (
@@ -67,50 +68,48 @@ export default function Navbar() {
               </button>
             </form>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                {userInfo ? (
-                  <li className="nav-item dropdown">
-                    <Link
-                      className="nav-link dropdown-toggle"
-                      id="basic-nav-dropdown"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      {userInfo.name}
-                    </Link>
-                    <ul className="dropdown-menu">
-                      <li>
-                        <Link className="dropdown-item" to={`/profile`}>
-                          User Profile
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="dropdown-item" to={`/orderhistory`}>
-                          Order History
-                        </Link>
-                      </li>
-                      <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li>
-                        <Link
-                          className="dropdown-item"
-                          to={`#signout`}
-                          onClick={signoutHandler}
-                        >
-                          Sign Out
-                        </Link>
-                      </li>
-                    </ul>
-                  </li>
-                ) : (
-                  <Link className="nav-link" to={`/signin`}>
-                    Sign In
+              {userInfo ? (
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle"
+                    id="basic-nav-dropdown"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {userInfo.name}
                   </Link>
-                )}
-              </li>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to={`/profile`}>
+                        User Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to={`/orderhistory`}>
+                        Order History
+                      </Link>
+                    </li>
+                    <li>
+                      <hr className="dropdown-divider" />
+                    </li>
+                    <li>
+                      <Link
+                        className="dropdown-item"
+                        to={`#signout`}
+                        onClick={signoutHandler}
+                      >
+                        Sign Out
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+              ) : (
+                <Link className="nav-link" to={`/signin`}>
+                  Sign In
+                </Link>
+              )}
               <li className="nav-item">
                 <Link
                   className="nav-link active position-relative cart-responsive"
