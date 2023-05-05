@@ -8,6 +8,7 @@ import CartScreen from "../screens/CartScreen";
 import SigninScreen from "../screens/SigninScreen";
 import SignupScreen from "../screens/SignupScreen";
 import ShippingAddressScreen from "../screens/ShippingAddressScreen";
+import PaymentMethodScreen from "../screens/PaymentMethodScreen";
 
 export default function MainPage() {
   return (
@@ -25,6 +26,7 @@ export default function MainPage() {
                 path="/shipping"
                 element={<ShippingAddressScreen />}
               ></Route>
+              <Route path="/payment" element={<PaymentMethodScreen />}></Route>
               <Route path="/" element={<HomeScreen />} />
             </Routes>
           </div>
