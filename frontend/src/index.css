@@ -100,6 +100,17 @@ main {
   text-decoration-thickness: 1.1px;
 }
 
+.link-style {
+  color: #000000;
+  font-weight: 400;
+}
+
+.link-style:hover {
+  color: #d2ae6d;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1.1px;
+}
+
 .rating span {
   color: #d2ae6d;
 }
