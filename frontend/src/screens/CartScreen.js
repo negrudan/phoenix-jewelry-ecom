@@ -60,7 +60,7 @@ export default function CartScreen() {
                         className="img-fluid rounded img-thumbnail"
                       />{" "}
                       <Link
-                        to={`/${item.category}/${item.slug}`}
+                        to={`/product/${item.slug}`}
                         className="product-link"
                       >
                         {item.name}

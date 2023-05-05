@@ -10,6 +10,7 @@ import SignupScreen from "../screens/SignupScreen";
 import ShippingAddressScreen from "../screens/ShippingAddressScreen";
 import PaymentMethodScreen from "../screens/PaymentMethodScreen";
 import PlaceOrderScreen from "../screens/PlaceOrderScreen";
+import OrderScreen from "../screens/OrderScreen";
 
 export default function MainPage() {
   return (
@@ -19,11 +20,12 @@ export default function MainPage() {
         <main>
           <div className="container mt-3">
             <Routes>
-              <Route path="/:category/:slug" element={<ProductScreen />} />
+              <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/signin" element={<SigninScreen />} />
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/order/:id" element={<OrderScreen />}></Route>
               <Route
                 path="/shipping"
                 element={<ShippingAddressScreen />}

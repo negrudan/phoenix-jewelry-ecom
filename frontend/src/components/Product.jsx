@@ -31,7 +31,7 @@ export default function Product(props) {
 
   return (
     <div className="card text-center">
-      <Link to={`/${product.category}/${product.slug}`}>
+      <Link to={`/product/${product.slug}`}>
         <img
           src={require(`../images/products${product.image}`)}
           className="card-img-top"
@@ -39,10 +39,7 @@ export default function Product(props) {
         />
       </Link>
       <div className="card-body">
-        <Link
-          to={`/${product.category}/${product.slug}`}
-          className="product-link"
-        >
+        <Link to={`/product/${product.slug}`} className="product-link">
           <p className="card-title">{product.name}</p>
         </Link>
         <Rating rating={product.rating} numReviews={product.numReviews} />
