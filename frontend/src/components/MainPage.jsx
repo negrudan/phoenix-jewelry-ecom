@@ -11,6 +11,7 @@ import ShippingAddressScreen from "../screens/ShippingAddressScreen";
 import PaymentMethodScreen from "../screens/PaymentMethodScreen";
 import PlaceOrderScreen from "../screens/PlaceOrderScreen";
 import OrderScreen from "../screens/OrderScreen";
+import OrderHistoryScreen from "../screens/OrderHistoryScreen";
 
 export default function MainPage() {
   return (
@@ -26,6 +27,10 @@ export default function MainPage() {
               <Route path="/signup" element={<SignupScreen />} />
               <Route path="/placeorder" element={<PlaceOrderScreen />} />
               <Route path="/order/:id" element={<OrderScreen />}></Route>
+              <Route
+                path="/orderhistory"
+                element={<OrderHistoryScreen />}
+              ></Route>
               <Route
                 path="/shipping"
                 element={<ShippingAddressScreen />}
