@@ -24,9 +24,11 @@
 .logo-image {
   height: 85px;
 }
+
 .navbar {
-  background-color: #000000;
+  background: #181818;
 }
+
 .nav-link {
   color: #ffffff !important;
   font-family: rather, "Poppins", sans-serif;
@@ -58,6 +60,19 @@
 
 .navbar-toggler {
   border-color: rgb(210, 174, 109);
+}
+
+/* Poster */
+.poster {
+  top: 0;
+  left: 0;
+  height: 35em;
+  width: 100%;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
 }
 
 /* Products */
@@ -191,4 +206,13 @@ footer {
 .checkout-steps > div.active {
   border-bottom: 0.2rem solid #f08000;
   color: #f08000;
+}
+
+.cover {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(http://lorempixel.com/800/600) no-repeat 50% 50% / cover;
 }

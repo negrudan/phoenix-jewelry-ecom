@@ -7,6 +7,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../utils";
 import { Store } from "../Store";
+import Navbar from "../components/Navbar";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -72,67 +73,73 @@ export default function ProductScreen() {
     <MessageBox variant="alert alert-danger">{error}</MessageBox>
   ) : (
     <div>
-      <div className="row">
-        <div className="col-md-6">
-          <img
-            className="img-large"
-            src={require(`../images/products${product.image}`)}
-            alt={product.name}
-          />
-        </div>
-        <div className="col-md-3">
-          <ul className="list-group list-group-flush">
-            <li className="list-group-item">
-              <Helmet>
-                <title>{product.name}</title>
-              </Helmet>
-              <h1>{product.name}</h1>
-            </li>
-            <li className="list-group-item">
-              <Rating rating={product.rating} numReviews={product.numReviews} />
-            </li>
-            <li className="list-group-item">Price: ${product.price}</li>
-            <li className="list-group-item">
-              Description:
-              <p>{product.description}</p>
-            </li>
-          </ul>
-        </div>
-        <div className="col-md-3">
-          <div className="card">
-            <div className="card-body">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item">
-                  <div className="row">
-                    <div className="col">Price:</div>
-                    <div className="col">${product.price}</div>
-                  </div>
-                </li>
-                <li className="list-group-item">
-                  <div className="row">
-                    <div className="col">Status:</div>
-                    <div className="col">
-                      {product.countInStock > 0 ? (
-                        <span className="badge bg-success">In Stock</span>
-                      ) : (
-                        <span className="badge bg-danger">Unavailable</span>
-                      )}
-                    </div>
-                  </div>
-                </li>
-                {product.countInStock > 0 && (
+      <Navbar />
+      <div className="container mt-3">
+        <div className="row">
+          <div className="col-md-6">
+            <img
+              className="img-large"
+              src={require(`../images/products${product.image}`)}
+              alt={product.name}
+            />
+          </div>
+          <div className="col-md-3">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">
+                <Helmet>
+                  <title>{product.name}</title>
+                </Helmet>
+                <h1>{product.name}</h1>
+              </li>
+              <li className="list-group-item">
+                <Rating
+                  rating={product.rating}
+                  numReviews={product.numReviews}
+                />
+              </li>
+              <li className="list-group-item">Price: ${product.price}</li>
+              <li className="list-group-item">
+                Description:
+                <p>{product.description}</p>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-3">
+            <div className="card">
+              <div className="card-body">
+                <ul className="list-group list-group-flush">
                   <li className="list-group-item">
-                    <div className="d-grid">
-                      <button
-                        onClick={addToCartHandler}
-                        className="btn btn-primary"
-                      >
-                        Add to cart
-                      </button>
+                    <div className="row">
+                      <div className="col">Price:</div>
+                      <div className="col">${product.price}</div>
                     </div>
                   </li>
-                )}
-              </ul>
+                  <li className="list-group-item">
+                    <div className="row">
+                      <div className="col">Status:</div>
+                      <div className="col">
+                        {product.countInStock > 0 ? (
+                          <span className="badge bg-success">In Stock</span>
+                        ) : (
+                          <span className="badge bg-danger">Unavailable</span>
+                        )}
+                      </div>
+                    </div>
+                  </li>
+                  {product.countInStock > 0 && (
+                    <li className="list-group-item">
+                      <div className="d-grid">
+                        <button
+                          onClick={addToCartHandler}
+                          className="btn btn-primary"
+                        >
+                          Add to cart
+                        </button>
+                      </div>
+                    </li>
+                  )}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

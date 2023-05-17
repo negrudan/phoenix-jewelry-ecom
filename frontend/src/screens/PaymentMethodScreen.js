@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
 import { Store } from "../Store";
+import Navbar from "../components/Navbar";
 
 export default function PaymentMethodScreen() {
   const navigate = useNavigate();
@@ -28,28 +29,30 @@ export default function PaymentMethodScreen() {
   };
   return (
     <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <div className="container small-container">
-        <Helmet>
-          <title>Payment Method</title>
-        </Helmet>
-        <h1 className="my-3">Payment Method</h1>
-        <form onSubmit={submitHandler}>
-          <div className="mb-3 form-check">
-            <input
-              type="radio"
-              className="form-check-input"
-              id="PayPal"
-              label="PayPal"
-              value="PayPal"
-              checked={paymentMethodName === "PayPal"}
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-            <label class="form-check-label" htmlFor="PayPal">
-              Paypal
-            </label>
-          </div>
-          <div className="mb-3 form-check">
+      <Navbar />
+      <div className="container mt-3">
+        <CheckoutSteps step1 step2 step3></CheckoutSteps>
+        <div className="container small-container">
+          <Helmet>
+            <title>Payment Method</title>
+          </Helmet>
+          <h1 className="my-3">Payment Method</h1>
+          <form onSubmit={submitHandler}>
+            <div className="mb-3 form-check">
+              <input
+                type="radio"
+                className="form-check-input"
+                id="PayPal"
+                label="PayPal"
+                value="PayPal"
+                checked={paymentMethodName === "PayPal"}
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              />
+              <label class="form-check-label" htmlFor="PayPal">
+                Paypal
+              </label>
+            </div>
+            {/* <div className="mb-3 form-check">
             <input
               type="radio"
               className="form-check-input"
@@ -62,13 +65,14 @@ export default function PaymentMethodScreen() {
             <label class="form-check-label" htmlFor="Stripe">
               Stripe
             </label>
-          </div>
-          <div className="mb-3">
-            <button type="submit" className="btn btn-primary">
-              Continue
-            </button>
-          </div>
-        </form>
+          </div> */}
+            <div className="mb-3">
+              <button type="submit" className="btn btn-primary">
+                Continue
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { Store } from "../Store";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -60,63 +61,68 @@ export default function ProfileScreen() {
   };
 
   return (
-    <div className="container small-container">
-      <Helmet>
-        <title>User Profile</title>
-      </Helmet>
-      <h1 className="my-3">User Profile</h1>
-      <form onSubmit={submitHandler}>
-        <div htmlFor="name" className="mb-3">
-          <label>Name</label>
-          <input
-            value={name}
-            className="form-control"
-            id="name"
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+    <div>
+      <Navbar />
+      <div className="container mt-3">
+        <div className="container small-container">
+          <Helmet>
+            <title>User Profile</title>
+          </Helmet>
+          <h1 className="my-3">User Profile</h1>
+          <form onSubmit={submitHandler}>
+            <div htmlFor="name" className="mb-3">
+              <label>Name</label>
+              <input
+                value={name}
+                className="form-control"
+                id="name"
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                className="form-control"
+                id="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <button className="btn btn-primary" type="submit">
+                Update
+              </button>
+            </div>
+          </form>
         </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            value={email}
-            className="form-control"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <button className="btn btn-primary" type="submit">
-            Update
-          </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

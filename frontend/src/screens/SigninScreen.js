@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { Store } from "../Store";
 import { toast } from "react-toastify";
 import { getError } from "../utils";
+import Navbar from "../components/Navbar";
 // import axios from "axios";
 
 export default function SigninScreen() {
@@ -47,46 +48,53 @@ export default function SigninScreen() {
   // }, [cart]);
 
   return (
-    <div className="container small-container">
-      <Helmet>
-        <title>Sign In</title>
-      </Helmet>
-      <h1 className="my-3">Sign In</h1>
-      <form onSubmit={submitHandler}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
+    <div>
+      <Navbar />
+      <div className="container mt-3">
+        <div className="container small-container">
+          <Helmet>
+            <title>Sign In</title>
+          </Helmet>
+          <h1 className="my-3">Sign In</h1>
+          <form onSubmit={submitHandler}>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <div className="mb-3">
+              <button type="submit" className="btn btn-primary">
+                Sign In
+              </button>
+            </div>
+            <div className="mb-3">
+              New customer?{" "}
+              <Link to={`/signup?redirect=${redirect}`}>
+                Create your account
+              </Link>
+            </div>
+          </form>
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <button type="submit" className="btn btn-primary">
-            Sign In
-          </button>
-        </div>
-        <div className="mb-3">
-          New customer?{" "}
-          <Link to={`/signup?redirect=${redirect}`}>Create your account</Link>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }
