@@ -140,15 +140,19 @@ main {
 }
 
 .rating span {
-  color: #d2ae6d;
+  color: #212121;
 }
 
-.card {
+.product-buy {
   border: none;
 }
 
-.card:hover {
-  border: 1px solid #c6c6c6;
+.product-card {
+  border: none;
+}
+
+.product-card:hover {
+  border: 0.5px solid #c6c6c6;
 }
 
 .card-text {
@@ -159,12 +163,6 @@ main {
 /* .card {
   width: 15rem;
 } */
-
-/* Footer */
-
-footer {
-  font-family: "Montserrat", sans-serif;
-}
 
 .img-large {
   max-width: 100%;
@@ -225,4 +223,35 @@ footer {
 .checkout-steps > div.active {
   border-bottom: 0.2rem solid #f08000;
   color: #f08000;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.sortby {
+  border: 1px solid #ccc;
+  border-radius: 16px;
+  padding: 0.35rem;
+}
+
+.sort-title {
+  border-bottom: 0.5px solid #ccc;
+}
+
+.rm-bulletpoints {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 0.25rem;
+}
+
+.sort-list {
+  margin-bottom: 0.3rem;
+}
+
+/* Footer */
+
+footer {
+  font-family: "Montserrat", sans-serif;
 }

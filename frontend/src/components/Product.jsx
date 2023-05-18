@@ -30,7 +30,7 @@ export default function Product(props) {
   };
 
   return (
-    <div className="card text-center">
+    <div className="card product-card hover-container text-center">
       <Link to={`/product/${product.slug}`}>
         <img
           src={require(`../images/products${product.image}`)}

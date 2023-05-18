@@ -138,7 +138,7 @@ export default function OrderScreen() {
         </Helmet>
         <h1 className="my-3">Order {orderId}</h1>
         <div className="row">
-          <div className="col" md={8}>
+          <div className="col-md-8">
             <div className="card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Shipping</h5>
