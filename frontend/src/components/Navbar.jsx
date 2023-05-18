@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
-import { ToastContainer } from "react-toastify";
+import React, { useContext, useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { Link } from "react-router-dom";
 import { Store } from "../Store";
+import { getError } from "../utils";
+import axios from "axios";
+import SearchBox from "./SearchBox";
 
 export default function Navbar() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -17,6 +19,20 @@ export default function Navbar() {
     localStorage.removeItem("paymentMethod");
     window.location.href = "/signin";
   };
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(`/api/products/categories`);
+        setCategories(data);
+      } catch (err) {
+        toast.error(getError(err));
+      }
+    };
+    fetchCategories();
+  }, []);
 
   return (
     <React.Fragment>
@@ -43,33 +59,28 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
+            <ul className="navbar-nav me-auto w-100">
+              {/* <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to={"/"}>
                   EARRINGS
                 </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={"/"}>
-                  LINK
-                </Link>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {categories.map((category) => (
+                <li className="nav-item" key={category}>
+                  <Link
+                    className="nav-link"
+                    to={`/search?category=${category}`}
+                  >
+                    {category.toUpperCase()}
+                  </Link>
+                </li>
+              ))}
+              {/* <li className="nav-item">
                 <Link className="nav-link disabled">DISABLED</Link>
-              </li>
+              </li> */}
             </ul>
-            <form className="d-flex" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                <SearchIcon />
-              </button>
-            </form>
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <SearchBox />
+            <ul className="navbar-nav me-4 mb-2 mb-lg-0 ml-4">
               {userInfo ? (
                 <li className="nav-item dropdown">
                   <Link
