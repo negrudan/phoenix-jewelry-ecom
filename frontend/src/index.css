@@ -44,6 +44,11 @@
   font-weight: 300;
 }
 
+.sign-in {
+  font-size: 15px !important;
+  /* width: 5rem; */
+}
+
 .form-control {
   border-radius: 0;
   width: 300px;

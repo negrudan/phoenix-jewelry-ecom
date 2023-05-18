@@ -38,7 +38,7 @@ export default function Navbar() {
     <React.Fragment>
       {/* bg-black bg-gradient */}
       <ToastContainer position="bottom-center" limit={1} />
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary w-100">
         <div className="container-fluid">
           <Link className="navbar-brand" to={`/`}>
             <img
@@ -59,7 +59,7 @@ export default function Navbar() {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto w-100">
+            <ul className="navbar-nav me-auto">
               {/* <li className="nav-item">
                 <Link className="nav-link active" aria-current="page" to={"/"}>
                   EARRINGS
@@ -119,9 +119,47 @@ export default function Navbar() {
                   </ul>
                 </li>
               ) : (
-                <Link className="nav-link" to={`/signin`}>
-                  Sign In
-                </Link>
+                <li className="nav-item">
+                  <Link className="nav-link" to={`/signin`}>
+                    Sign In
+                  </Link>
+                </li>
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <li className="nav-item dropdown">
+                  <Link
+                    className="nav-link dropdown-toggle"
+                    id="admin-nav-dropdown"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Admin
+                  </Link>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <Link className="dropdown-item" to={`/admin/dashboard`}>
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to={`/admin/productlist`}>
+                        Products
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to={`/admin/orderlist`}>
+                        Orders
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to={`/admin/userlist`}>
+                        Users
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
               )}
               <li className="nav-item">
                 <Link
