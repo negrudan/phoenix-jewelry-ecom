@@ -68,7 +68,7 @@ export default function Navbar() {
               {categories.map((category) => (
                 <li className="nav-item" key={category}>
                   <Link
-                    className="nav-link"
+                    className="nav-link nav-link-em"
                     to={`/search?category=${category}`}
                   >
                     {category.toUpperCase()}
