@@ -441,6 +441,15 @@ img {
   margin: 0;
 }
 
+.btn-info {
+  color: #ffffff;
+}
+
+.btn-info:hover {
+  background-color: #d2ae6d;
+  border-color: #000000;
+}
+
 /* Footer */
 
 footer {

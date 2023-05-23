@@ -47,6 +47,22 @@ export default function SigninScreen() {
   //   localStorage.setItem("cart", JSON.stringify(cart));
   // }, [cart]);
 
+  const handleTestDriveLogin = async (e, item) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await Axios.post("/api/users/signin", {
+        email: "user@example.com",
+        password: "123456",
+      });
+      ctxDispatch({ type: "USER_SIGNIN", payload: data });
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate(redirect || "/");
+    } catch (err) {
+      toast.error(getError(err));
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -93,6 +109,12 @@ export default function SigninScreen() {
               </Link>
             </div>
           </form>
+          <p>
+            <strong>Or use a test account!</strong>
+          </p>
+          <button className="btn btn-info" onClick={handleTestDriveLogin}>
+            Test Account
+          </button>
         </div>
       </div>
     </div>
