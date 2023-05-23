@@ -154,9 +154,9 @@ main {
 }
 
 .btn-primary:hover {
-  background-color: #ffffff;
-  border-color: #d2ae6d;
-  color: #000000;
+  background-color: #d2ae6d;
+  border-color: #ffffff;
+  color: #ffffff;
 }
 
 .btn-large {
@@ -445,4 +445,15 @@ img {
 
 footer {
   font-family: "Montserrat", sans-serif;
+}
+
+/* .footer {
+  background-color: #000000;
+  color: #ffffff;
+  width: 100%;
+  height: 20vh;
+} */
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.2);
 }
