@@ -60,7 +60,7 @@ export default function Footer() {
         ©2023 Copyright:&nbsp;
         <a
           className="text-reset fw-bold"
-          href="#!"
+          href="https://negrudan.github.io/"
           target="_blank"
           rel="noopener noreferrer"
         >
